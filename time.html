@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Timeout Page</title>
+    <style>
+        body {
+            /* background-image: url('your-background-image.jpg'); */
+            background-color: black;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: sans-serif;
+
+        }
+
+        .main {
+            text-align: center;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            padding: 20px;
+            /* border-radius: 10px; */
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .image-container {
+            position: relative;
+            /* Needed for absolute positioning */
+            display: inline-block;
+            /* Makes it wrap tightly around the image */
+        }
+
+        img {
+            max-width: 500px;
+            height: auto;
+            border-radius: 50%;
+
+        }
+
+        .image-container::before {
+            content: "Unraveling the Mysteries of Ancient Indian Tech";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            /* border: 4px solid white; */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            border: 2px solid black;
+            animation: rotateText 10s linear infinite;
+        }
+
+        @keyframes rotateText {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <p id="countdown">Redirecting in 2:00</p>
+        <div class="image-container">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+    </div>
+
+    <script>
+        function redirect() {
+            window.location.href = "index.html";
+        }
+
+        let timeRemaining = 20;
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            document.getElementById('countdown').textContent = `Redirecting in ${minutes}:${seconds}`;
+
+            timeRemaining--;
+
+            if (timeRemaining < 0) {
+                clearInterval(countdownInterval);
+                redirect();
+            }
+        }
+
+        updateCountdown();
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+    </script>
+
+</body>
+
+</html>

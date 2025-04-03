@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evogen-NIGHT ASSIGNMENT</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            background-image: url(data.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hd {
+            color: white;
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .main {
+            width: 110%;
+            max-width: 1000px;
+            border: 1.3px solid white;
+            border-radius: 12px;
+            color: white;
+            padding: 10px;
+            margin: 10px auto;
+            background: linear-gradient(220deg, blue, white);
+            position: relative;
+            /* For absolute positioning of camera icon */
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        #question {
+            font-size: 1em;
+            margin-bottom: 20px;
+            letter-spacing: 1.3px;
+        }
+
+        .tit {
+            font-size: 20px;
+            letter-spacing: 1.3px;
+        }
+
+        .para {
+            font-size: 22px;
+            letter-spacing: 1.3px;
+        }
+
+        .seq {
+            letter-spacing: 1.3px;
+            font-size: 23px;
+        }
+
+        .marquee-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .marquee-text {
+            color: red;
+            font-size: 20px;
+            white-space: nowrap;
+        }
+
+        .night-shift-marquee-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .night-shift-marquee-text {
+            color: yellow;
+            font-size: 25px;
+            white-space: nowrap;
+            animation: pulse 5s infinite ease-in-out, slide 25s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .camera-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            /* Adjust size as needed */
+            animation: cameraFlash 1s infinite alternate;
+            /* Camera flash animation */
+        }
+
+        @keyframes cameraFlash {
+            0% {
+                opacity: 0.5;
+                color: red;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="hd">"Night Shift: Data Insights."</h1>
+        <div class="marquee-container">
+            <marquee direction="left" scrollamount="3" class="marquee-text">
+                DON'T COPY THE CONTENT | DON'T TRY TO TAKE PIC | FOR THIS QUESTION | YOU ARE UNDER CCTV SURVEILLANCE
+            </marquee>
+        </div>
+        <div class="main">
+            <img src="cam.png" alt="Camera Icon" class="camera-icon">
+            <h1 id="question">Decode the following question to get a HIDDEN CODE <br>(Please remember your HIDDEN
+                CODE)
+            </h1>
+            <hr>
+            <p class="tit">Title: The Enigmatic Sequence and the Hidden Code Challenge</p>
+            <p class="para">"You've intercepted a transmission containing a mysterious sequence of numbers. Within this
+                sequence lies
+                a hidden code, and your mission is to decipher it. To succeed, you must first unravel the sequence's
+                rule and then perform a series of analytical steps. Good luck, codebreaker!"</p>
+            <h2 class="seq">The Sequence:
+
+                "The sequence, denoted as 'S', begins as follows: <br>
+
+                S = [2, 5, 11, 23, 47, ...]"</h2>
+            <h1 style="letter-spacing: 1.3px; font-size: 22px;">Your Tasks:</h1>
+            <h2 style="letter-spacing: 1.2px; font-size: 19px;">1 : "Determine the mathematical rule that generates this
+                sequence. Show
+                your work." </h2>
+            <h2 style="letter-spacing: 1.2px; font-size: 19px;">2 : "Continue the sequence until you find the first term
+                that exceeds
+                1000. Let this term be represented
+                by 'X'. Calculate the sum of the digits of 'X'. This sum is the hidden code."</h2>
+
+            <p id="countdown">Time Remaining: 20sec</p>
+
+            <div class="night-shift-marquee-container">
+                <marquee direction="left" scrollamount="5" class="night-shift-marquee-text">
+                    ACTUAL NIGHT SHIFT BEGINS AFTER THIS ROUND GETS FINISHED
+                </marquee>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirect() {
+            window.location.href = "index2.html";
+        }
+
+        let timeRemaining = 30;
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            document.getElementById('countdown').textContent = `Time Remaining: ${minutes}:${seconds}`;
+
+            timeRemaining--;
+
+            if (timeRemaining < 0) {
+                clearInterval(countdownInterval);
+                redirect();
+            }
+        }
+
+        updateCountdown();
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
